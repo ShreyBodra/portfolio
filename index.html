@@ -2,263 +2,394 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shrey Prafulkumar Bodra - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom neon gradients and glassmorphism */
-    .neon-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600; }
-    .glass { @apply bg-white/10 backdrop-blur-md border border-white/20; }
-    .floating-shape { animation: float 6s ease-in-out infinite; }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrey Prafulkumar Bodra - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a10;
+            --primary-glow: #00f6ff;
+            --secondary-glow: #7a00ff;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0b0;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: background-pan 10s linear infinite;
+        }
+
+        @keyframes background-pan {
+            from { background-position: 0 0; }
+            to { background-position: -20px -20px; }
+        }
+
+        .aurora-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 246, 255, 0.15), transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(122, 0, 255, 0.15), transparent 40%);
+            animation: aurora 20s infinite alternate;
+        }
+
+        @keyframes aurora {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .neon-text {
+            background-image: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(16, 16, 22, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 246, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .glass-card:hover:before {
+            opacity: 0.1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-glow), var(--secondary-glow));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-dark);
+            border: 3px solid var(--primary-glow);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-left {
+            left: 0;
+        }
+        .timeline-right {
+            left: 50%;
+        }
+        .timeline-right::after {
+            left: -10px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 10px; }
+            .timeline-left, .timeline-right { left: 0; }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-200 font-sans antialiased">
+<body class="antialiased">
 
-  <!-- Floating SVG Accents -->
-  <div class="pointer-events-none fixed inset-0 overflow-hidden">
-    <svg class="absolute top-10 left-10 w-32 h-32 opacity-20 floating-shape" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="40" stroke="cyan" stroke-width="2" fill="none" />
-    </svg>
-    <svg class="absolute bottom-20 right-20 w-48 h-48 opacity-15 floating-shape" viewBox="0 0 100 100">
-      <rect x="20" y="20" width="60" height="60" stroke="purple" stroke-width="2" fill="none" />
-    </svg>
-  </div>
+    <div class="aurora-background"></div>
 
-  <header class="py-12">
-    <div class="container mx-auto text-center glass p-8 rounded-3xl shadow-xl relative z-10">
-      <img src="profile_image.jpg" alt="Shrey Bodra" class="w-36 h-36 rounded-full mx-auto border-4 border-cyan-400" />
-      <h1 class="mt-6 text-5xl font-extrabold neon-text">Shrey Bodra</h1>
-      <p class="mt-2 text-xl text-gray-300">Data Analyst • Software Developer • Application Developer</p>
+    <div class="relative z-10">
+
+        <header class="py-20 min-h-screen flex items-center justify-center text-center scroll-animate">
+            <div class="container mx-auto px-6">
+                <img src="profile_image.jpg" alt="Shrey Bodra" class="w-40 h-40 rounded-full mx-auto border-4 border-cyan-400 shadow-lg" style="box-shadow: 0 0 20px var(--primary-glow);" />
+                <h1 class="mt-8 text-6xl font-bold neon-text">Shrey Bodra</h1>
+                <p class="mt-4 text-2xl text-gray-300 font-light">Data Analyst • Software Developer • Application Developer</p>
+            </div>
+        </header>
+
+        <main class="space-y-24 md:space-y-32">
+
+            <section id="about" class="container mx-auto px-6 scroll-animate">
+                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl">
+                    <div class="card-content text-center">
+                        <h2 class="text-4xl font-bold neon-text mb-6">About Me</h2>
+                        <p class="mb-4 leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
+                            A results-driven Data Analyst and Software Developer with 3+ years of experience, holding an M.S. in Computer Science from NJIT. I specialize in building end-to-end solutions, from architecting high-volume ETL pipelines and scalable microservices on AWS, to developing interactive Power BI dashboards and elegant front-end experiences with Flutter and React.
+                        </p>
+                        <p class="leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
+                            I have a proven track record of improving system performance by up to 40% and am passionate about leveraging data to drive strategic decisions and deliver impactful, user-centric applications.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item timeline-left scroll-animate">
+                        <div class="glass-card p-6 rounded-lg">
+                           <div class="card-content">
+                                <h3 class="text-xl font-bold text-white">Software Developer</h3>
+                                <p class="text-md text-cyan-400 mb-2">YoungBrainz Infotec Pvt. Ltd</p>
+                                <p class="text-sm text-gray-400 mb-3">(Jul 2020 - Jul 2023)</p>
+                                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
+                                    <li>Managed design systems and reusable UI components utilizing Material Design principles, receiving positive feedback from
+over 150 beta testers during usability assessments.</li>
+                                    <li>Integrated Firebase for secure user authentication and implemented Role-Based Access Control (RBAC) to manage granular permissions tailored to distinct organizational roles, enhancing data security and operational efficiency.</li>
+                                    <li> Designed a task management system using BLoC architecture and state management, which organized follow-ups, calls,
+site visits, and messages, achieving a 50% increase in operational efficiency in client management.</li>
+                                    <li>Developed a patient management system using Python, FastAPI, and PostgreSQL, automating appointment scheduling
+and patient record management, reducing administrative workload by 35%.</li>
+                                </ul>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-right scroll-animate">
+                         <div class="glass-card p-6 rounded-lg">
+                           <div class="card-content">
+                                <h3 class="text-xl font-bold text-white">Data Analyst Intern</h3>
+                                <p class="text-md text-cyan-400 mb-2">Digiprop India LLP</p>
+                                <p class="text-sm text-gray-400 mb-3">(Jan 2020 - Jun 2020)</p>
+                                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
+                                    <li>Automated web scraping of housing listings using Python and Selenium, deploying the pipeline as AWS Lambda functions
+triggered by AWS CloudWatch, reducing manual update delays by 90%, to ensure up-to-date data ingestion.</li>
+                                    <li>Engineered a normalized SQL database with PostgreSQL to index 20+ scraped housing attributes, decreasing data retrieval
+latency by 60% and improving query speeds, which expedited report generation.</li>
+                                    <li>Empowered stakeholder decision-making by developing intuitive Power BI dashboards that translated complex property data
+into actionable insights on key metrics and market trends.</li>
+                                    <li>Architected and implemented an end-to-end machine learning pipeline for residential property valuation, leveraging Pandas
+for advanced feature engineering and XGBoost for model training, resulting in a 96.38% prediction accuracy.</li>
+                                </ul>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="education" class="container mx-auto px-6 scroll-animate">
+                <h2 class="text-4xl font-bold neon-text mb-12 text-center">Education</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="glass-card p-6 rounded-lg text-center">
+                        <div class="card-content">
+                            <h3 class="text-xl font-semibold">M.S. in Computer Science</h3>
+                            <p class="text-md text-gray-400">New Jersey Institute of Technology, 2025</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center">
+                        <div class="card-content">
+                            <h3 class="text-xl font-semibold">B.E. in Information & Communication Technology</h3>
+                            <p class="text-md text-gray-400">Gujarat Technological University, 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="projects" class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 100ms;">
+                        <div class="card-content p-6">
+                            <img src="sentimentalanalysis.jpg" alt="Sentiment Analysis" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+                            <h3 class="text-xl font-bold neon-text mb-2">Sentiment Analysis Model</h3>
+                            <p class="text-gray-300 text-sm">Developed an ML model to analyze social media sentiments, achieving 85% accuracy in predicting user emotions.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 200ms;">
+                         <div class="card-content p-6">
+                            <img src="facemaskdetection.jpg" alt="Face Mask Detection" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+                            <h3 class="text-xl font-bold neon-text mb-2">Face Mask Detection</h3>
+                            <p class="text-gray-300 text-sm">Implemented a real-time face mask detection system using OpenCV and TensorFlow to enhance public safety.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+                         <div class="card-content p-6">
+                            <img src="ecommerce.jpg" alt="E-commerce App" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+                            <h3 class="text-xl font-bold neon-text mb-2">Flutter E-commerce App</h3>
+                            <p class="text-gray-300 text-sm">Designed a Flutter-based e-commerce app with integrated payment gateways and a user-friendly UI.</p>
+                         </div>
+                    </div>
+                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+                         <div class="card-content p-6">
+                            <img src="newsapp.jpg" alt="NEWS App" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+                            <h3 class="text-xl font-bold neon-text mb-2">News Aggregator App</h3>
+                            <p class="text-gray-300 text-sm">Created a news aggregation app that curates articles from various sources, allowing users to customize their news feed.</p>
+                         </div>
+                    </div>
+                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+                         <div class="card-content p-6">
+                            <img src="section-realestate.jpg" alt="CRM for Construction Business" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+                            <h3 class="text-xl font-bold neon-text mb-2">CRM Application for Construction Business</h3>
+                            <p class="text-gray-300 text-sm">Developed a CRM system tailored for construction companies, streamlining client management and project tracking.</p>
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Technical Skills</h2>
+                <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto scroll-animate">
+                    <div class="tech-pill">Python</div>
+                    <div class="tech-pill">Flutter & Dart</div>
+                    <div class="tech-pill">JavaScript</div>
+                    <div class="tech-pill">HTML/CSS</div>
+                    <div class="tech-pill">SQL</div>
+                    <div class="tech-pill">PostgreSQL</div>
+                    <div class="tech-pill">PowerBI</div>
+                    <div class="tech-pill">AWS</div>
+                    <div class="tech-pill">Firebase</div>
+                    <div class="tech-pill">Docker</div>
+                    <div class="tech-pill">Jenkins</div>
+                    <div class="tech-pill">Git</div>
+                </div>
+                <style>
+                    .tech-pill {
+                        background: rgba(16, 16, 22, 0.6);
+                        border: 1px solid var(--border-color);
+                        padding: 8px 16px;
+                        border-radius: 9999px;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                    }
+                    .tech-pill:hover {
+                        color: white;
+                        border-color: var(--primary-glow);
+                        transform: translateY(-2px) scale(1.05);
+                        background: linear-gradient(90deg, rgba(0, 246, 255, 0.1), rgba(122, 0, 255, 0.1));
+                        box-shadow: 0 0 15px var(--primary-glow);
+                    }
+                </style>
+            </section>
+
+            <section id="contact" class="container mx-auto px-6 my-24 md:my-32">
+                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto scroll-animate">
+                    <div class="card-content text-center">
+                        <h2 class="text-4xl font-bold neon-text mb-4">Get In Touch</h2>
+                        <p class="text-gray-300 mb-8">I'm currently seeking new opportunities. Feel free to reach out!</p>
+                        <div class="flex flex-wrap items-center justify-center gap-6">
+                            <a href="mailto:shrey.bodra@gmail.com" class="contact-link">
+                                <span>shreybodra777@gmail.com</span>
+                            </a>
+                            <a href="https://linkedin.com/in/shrey-bodra" target="_blank" class="contact-link">
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/shreybodra" target="_blank" class="contact-link">
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .contact-link {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        border: 1px solid var(--primary-glow);
+                        border-radius: 5px;
+                        color: var(--primary-glow);
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                    }
+                    .contact-link:hover {
+                        background-color: var(--primary-glow);
+                        color: var(--bg-dark);
+                        box-shadow: 0 0 20px var(--primary-glow);
+                        transform: scale(1.05);
+                    }
+                </style>
+            </section>
+
+        </main>
+
+        <footer class="py-8 text-center text-gray-500">
+            &copy; 2025 Shrey Prafulkumar Bodra. All rights reserved.
+        </footer>
     </div>
-  </header>
+    
+    <script>
+        const animatedElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-  <main class="space-y-20">
-
-    <!-- About Me -->
-    <section id="about" class="container mx-auto px-6">
-      <div class="glass p-8 rounded-2xl shadow-lg text-center">
-        <h2 class="text-3xl font-bold neon-text mb-4">About Me</h2>
-        <p class="mb-4 leading-relaxed">
-          I am a results-driven Data Analyst and Software Developer with over 3 years of professional experience. I hold an M.S. in Computer Science from NJIT, where I specialized in Machine Learning, Cloud Architectures, and Big Data frameworks. I’ve architected and optimized ETL pipelines ingesting millions of records, built interactive dashboards in Power BI and Flutter for real-time insights, and deployed scalable microservices on AWS Lambda and Firebase Cloud Functions.
-        </p>
-        <p class="leading-relaxed">
-          Proven track record delivering end-to-end solutions: from data ingestion and model training to front-end integration and deployment. Passionate about leveraging data to drive strategic decisions, improving system performance by up to 40%, and delivering elegant user experiences with Flutter and React.
-        </p>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="container mx-auto">
-      <h2 class="text-3xl font-bold neon-text mb-6 text-center">Experience</h2>
-      <ul class="space-y-6">
-        <!-- Data Analyst -->
-        <li class="glass p-6 rounded-2xl transform origin-left transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-white/20 overflow-visible">
-          <h3 class="text-2xl font-semibold">Data Analyst<br><span class="text-gray-400">CRM Solutions for Construction Business (Jan 2024 – Present)</span></h3>
-          <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2">
-            <li>Architected and optimized ETL pipelines processing over 5 million records monthly, reducing ingestion time by 30%.</li>
-            <li>Designed and deployed real-time dashboards in Power BI and Flutter, enabling stakeholders to track KPIs and budgets.</li>
-            <li>Implemented serverless microservices on AWS Lambda and Firebase Cloud Functions, improving API response times by 25%.</li>
-          </ul>
-        </li>
-
-        <!-- Machine Learning Engineer -->
-        <li class="glass p-6 rounded-2xl transform origin-left transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-white/20 overflow-visible">
-          <h3 class="text-2xl font-semibold">Machine Learning Engineer<br><span class="text-gray-400">Dosepacker India LLP (Jun 2023 – Dec 2023)</span></h3>
-          <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2">
-            <li>Developed and deployed BiLSTM sentiment analysis and ResNet50-based mask detection models achieving up to 88% accuracy.</li>
-            <li>Streamlined data preprocessing pipelines using Python and Pandas, reducing feature-extraction time by 40%.</li>
-            <li>Collaborated with cross-functional teams to integrate ML services into production via RESTful APIs on AWS.</li>
-          </ul>
-        </li>
-
-        <!-- Android Developer -->
-        <li class="glass p-6 rounded-2xl transform origin-left transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-white/20 overflow-visible">
-          <h3 class="text-2xl font-semibold">Android Developer<br><span class="text-gray-400">Digiprop India LLP (Jun 2022 – May 2023)</span></h3>
-          <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2">
-            <li>Designed and maintained Kotlin/Java Android applications, integrating Firebase Auth and Firestore for secure user management.</li>
-            <li>Implemented analytics dashboards using MPAndroidChart, enabling real-time tracking of user engagement metrics.</li>
-            <li>Optimized application performance, reducing crash rates by 20% and improving load times by 15%.</li>
-          </ul>
-        </li>
-
-        <!-- App Developer -->
-        <li class="glass p-6 rounded-2xl transform origin-left transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-white/20 overflow-visible">
-          <h3 class="text-2xl font-semibold">Application Developer<br><span class="text-gray-400">Geet Gunjan Analytics Platform (Jul 2021 – May 2022)</span></h3>
-          <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2">
-            <li>Built a wholesale order management platform for mattress dealer, enabling real-time raw-material ordering.</li>
-            <li>Developed interactive spending analytics using pie and bar charts, facilitating data-driven procurement decisions.</li>
-            <li>Integrated EmailJS for automated order notifications, improving response times by 50%.</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Education -->
-     <section id="education" class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold neon-text mb-6 text-center">Education</h2>
-      <ul class="space-y-4">
-        <li class="glass p-6 rounded-2xl hover:scale-105 transform transition">
-          <h3 class="text-xl font-semibold">M.S. in Computer Science<br><span class="text-gray-400">New Jersey Institute of Technology, 2025</span></h3>
-        </li>
-        <li class="glass p-6 rounded-2xl hover:scale-105 transform transition">
-          <h3 class="text-xl font-semibold">B.E. in Information and Communication Technology<br><span class="text-gray-400">Gujarat Technological University, 2022</span></h3>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold neon-text mb-6">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-2xl shadow-xl hover:shadow-2xl transition relative">
-          <img src="sentimentalanalysis.jpg" alt="Sentiment Analysis" class="w-full h-40 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-semibold neon-text mb-2">Sentiment Analysis Model</h3>
-          <p class="text-gray-300">Developed a machine learning model to analyze social media sentiments, achieving 85% accuracy in predicting user emotions.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-xl hover:shadow-2xl transition relative">
-          <img src="ecommerce.jpg" alt="E-commerce App" class="w-full h-40 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-semibold neon-text mb-2">Flutter E-commerce App</h3>
-          <p class="text-gray-300">Designed and implemented a Flutter-based e-commerce application with integrated payment gateways and user-friendly UI.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-xl hover:shadow-2xl transition relative">
-          <img src="newsapp.jpg" alt="News App" class="w-full h-40 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-semibold neon-text mb-2">News Aggregator App</h3>
-          <p class="text-gray-300">Created a news aggregation app that curates articles from various sources, allowing users to customize their news feed.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-xl hover:shadow-2xl transition relative">
-          <img src="facemaskdetection.jpg" alt="Face Mask Detection" class="w-full h-40 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-semibold neon-text mb-2">Face Mask Detection</h3>
-          <p class="text-gray-300">Implemented a real-time face mask detection system using OpenCV and TensorFlow to enhance public safety measures.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-xl hover:shadow-2xl transition relative">
-          <img src="construction.jpg" alt="CRM App" class="w-full h-40 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-semibold neon-text mb-2">CRM Application for Construction Business</h3>
-          <p class="text-gray-300">Developed a CRM system tailored for construction companies, streamlining client management and project tracking.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Skills -->
-    <section id="skills" class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold neon-text mb-6">Technical Skills</h2>
-      <div class="flex flex-wrap gap-6">
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8" alt="Python" />
-          <span>Python</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="w-8 h-8" alt="Dart" />
-          <span>Flutter & Dart</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://www.svgrepo.com/show/7866/html.svg" class="w-8 h-8" alt="JavaScript" />
-          <span>HTML</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://www.svgrepo.com/show/32369/css.svg" class="w-8 h-8" alt="JavaScript" />
-          <span>CSS</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-8 h-8" alt="JavaScript" />
-          <span>JavaScript</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://www.svgrepo.com/show/331760/sql-database-generic.svg" class="w-8 h-8" alt="React" />
-          <span>SQL</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://www.svgrepo.com/show/354200/postgresql.svg" class="w-8 h-8" alt="React" />
-          <span>PostgreSql</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://1000logos.net/wp-content/uploads/2022/08/Microsoft-Power-BI-Logo.png" class="w-8 h-8" alt="React" />
-          <span>PowerBI</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-plain-wordmark.svg" class="w-8 h-8" alt="Docker" />
-          <span>Docker</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://www.svgrepo.com/show/373699/jenkins.svg" class="w-8 h-8" alt="Docker" />
-          <span>Jenkins</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/1.46.0/files/dark/aws-color.png" class="w-8 h-8" alt="AWS" />
-          <span>AWS</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg" class="w-8 h-8" alt="Firebase" />
-          <span>Firebase</span>
-        </div>
-        <div class="flex items-center space-x-2 glass p-3 rounded-lg">
-          <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" class="w-8 h-8" alt="Firebase" />
-          <span>Git</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Me -->
-    <section id="contact" class="container mx-auto px-6 mb-20">
-      <h2 class="text-3xl font-bold neon-text mb-6">Contact Me</h2>
-      <div class="glass p-6 rounded-2xl shadow-lg mb-8 flex flex-col space-y-2">
-        <a href="mailto:shrey.bodra@gmail.com" class="flex items-center space-x-3 hover:text-cyan-300">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" class="w-6 h-6" alt="Email" />
-          <span>shreybodra777@gmail.com</span>
-        </a>
-        <a href="https://linkedin.com/in/shrey-bodra" target="_blank" class="flex items-center space-x-3 hover:text-blue-400">
-          <img src="https://www.svgrepo.com/show/157006/linkedin.svg" class="w-6 h-6" alt="LinkedIn" />
-          <span>linkedin.com/in/shrey-bodra</span>
-        </a>
-        <a href="https://github.com/shreybodra" target="_blank" class="flex items-center space-x-3 hover:text-gray-400">
-          <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" class="w-6 h-6" alt="GitHub" />
-          <span>github.com/shreybodra</span>
-        </a>
-        <p class="flex items-center space-x-3">
-          <img src="https://www.svgrepo.com/show/513317/location-pin.svg" class="w-6 h-6" alt="Location" />
-          <span>Newark, NJ, USA</span>
-        </p>
-      </div>
-
-      <!-- EmailJS Form -->
-      <form id="contact-form" class="glass p-8 rounded-2xl shadow-xl space-y-4">
-        <div>
-          <label class="block text-gray-200">Name</label>
-          <input name="from_name" type="text" required class="mt-1 w-full p-3 rounded-lg bg-transparent border border-gray-600 focus:border-cyan-400 outline-none" placeholder="Your name" />
-        </div>
-        <div>
-          <label class="block text-gray-200">Email</label>
-          <input name="from_email" type="email" required class="mt-1 w-full p-3 rounded-lg bg-transparent border border-gray-600 focus:border-cyan-400 outline-none" placeholder="you@example.com" />
-        </div>
-        <div>
-          <label class="block text-gray-200">Message</label>
-          <textarea name="message" required class="mt-1 w-full p-3 rounded-lg bg-transparent border border-gray-600 focus:border-cyan-400 outline-none" rows="5" placeholder="Write your message here..."></textarea>
-        </div>
-        <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-600 text-gray-900 font-semibold hover:from-cyan-300 hover:to-purple-500 transition">Send Message</button>
-      </form>
-    </section>
-
-  </main>
-
-  <!-- EmailJS SDK & Handler -->
-  <script src="https://cdn.emailjs.com/sdk/3.6.2/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init('YOUR_USER_ID');
-      document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-          .then(() => { alert('✅ Message sent! I’ll be in touch soon.'); this.reset(); })
-          .catch(err => { console.error('EmailJS error:', err); alert('❌ Something went wrong. Please try again.'); });
-      });
-    })();
-  </script>
-
-  <footer class="py-6 text-center text-gray-400">
-    &copy; 2025 Shrey Prafulkumar Bodra. All rights reserved.
-  </footer>
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
 
 </body>
 
