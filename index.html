@@ -2,394 +2,479 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrey Prafulkumar Bodra - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0a10;
-            --primary-glow: #00f6ff;
-            --secondary-glow: #7a00ff;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0b0;
-            --border-color: rgba(255, 255, 255, 0.1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shrey Prafulkumar Bodra - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2c5c76954.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0a10;
+      --primary-glow: #00f6ff;
+      --secondary-glow: #7a00ff;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0b0;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
 
-        body {
-            background-color: var(--bg-dark);
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-primary);
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            animation: background-pan 10s linear infinite;
-        }
+    body {
+      background-color: var(--bg-dark);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: background-pan 10s linear infinite;
+    }
 
-        @keyframes background-pan {
-            from { background-position: 0 0; }
-            to { background-position: -20px -20px; }
-        }
+    @keyframes background-pan {
+      from {
+        background-position: 0 0;
+      }
 
-        .aurora-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-            background: radial-gradient(circle at 10% 20%, rgba(0, 246, 255, 0.15), transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(122, 0, 255, 0.15), transparent 40%);
-            animation: aurora 20s infinite alternate;
-        }
+      to {
+        background-position: -20px -20px;
+      }
+    }
 
-        @keyframes aurora {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    .aurora-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.4;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 246, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(122, 0, 255, 0.15), transparent 40%);
+      animation: aurora 20s infinite alternate;
+    }
 
-        .neon-text {
-            background-image: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
-        }
+    @keyframes aurora {
+      from {
+        transform: rotate(0deg);
+      }
 
-        .glass-card {
-            background: rgba(16, 16, 22, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
-        .glass-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 0;
-        }
+    .neon-text {
+      background-image: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
+    }
+    .floating-chat {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--bg-dark);
+      border: 2px solid var(--primary-glow);
+      padding: 12px 18px;
+      border-radius: 9999px;
+      color: var(--primary-glow);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--primary-glow);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
 
-        .glass-card:hover {
-            border-color: rgba(0, 246, 255, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .glass-card:hover:before {
-            opacity: 0.1;
-        }
+    .floating-chat:hover {
+      background: var(--primary-glow);
+      color: var(--bg-dark);
+      transform: scale(1.1);
+    }
 
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-glow), var(--secondary-glow));
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-        }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--bg-dark);
-            border: 3px solid var(--primary-glow);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .timeline-left {
-            left: 0;
-        }
-        .timeline-right {
-            left: 50%;
-        }
-        .timeline-right::after {
-            left: -10px;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .timeline::after { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .timeline-item::after { left: 10px; }
-            .timeline-left, .timeline-right { left: 0; }
-        }
+    .glass-card {
+      background: rgba(16, 16, 22, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Scroll Animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    .glass-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0, 246, 255, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .glass-card:hover:before {
+      opacity: 0.1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-glow), var(--secondary-glow));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1.5px;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: var(--bg-dark);
+      border: 3px solid var(--primary-glow);
+      top: 25px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-left {
+      left: 0;
+    }
+
+    .timeline-right {
+      left: 50%;
+    }
+
+    .timeline-right::after {
+      left: -10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 10px;
+      }
+
+      .timeline-left,
+      .timeline-right {
+        left: 0;
+      }
+    }
+
+    /* Scroll Animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
 <body class="antialiased">
 
-    <div class="aurora-background"></div>
+  <div class="aurora-background"></div>
 
-    <div class="relative z-10">
+  <div class="relative z-10">
+  <div class="floating-chat" onclick="window.location.href='mailto:shreybodra777@gmail.com'">
+    <i class="fas fa-comment-dots"></i> Let's Talk
+  </div>
+    <header class="py-20 min-h-screen flex items-center justify-center text-center scroll-animate">
+      <div class="container mx-auto px-6">
+        <img src="profile_image.jpg" alt="Shrey Bodra"
+          class="w-40 h-40 rounded-full mx-auto border-4 border-cyan-400 shadow-lg"
+          style="box-shadow: 0 0 20px var(--primary-glow);" />
+        <h1 class="mt-8 text-6xl font-bold neon-text">Shrey Bodra</h1>
+        <p class="mt-4 text-2xl text-gray-300 font-light">Data Analyst • Software Developer • Application Developer</p>
+      </div>
+    </header>
 
-        <header class="py-20 min-h-screen flex items-center justify-center text-center scroll-animate">
-            <div class="container mx-auto px-6">
-                <img src="profile_image.jpg" alt="Shrey Bodra" class="w-40 h-40 rounded-full mx-auto border-4 border-cyan-400 shadow-lg" style="box-shadow: 0 0 20px var(--primary-glow);" />
-                <h1 class="mt-8 text-6xl font-bold neon-text">Shrey Bodra</h1>
-                <p class="mt-4 text-2xl text-gray-300 font-light">Data Analyst • Software Developer • Application Developer</p>
+    <main class="space-y-24 md:space-y-32">
+
+      <section id="about" class="container mx-auto px-6 scroll-animate">
+        <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl">
+          <div class="card-content text-center">
+            <h2 class="text-4xl font-bold neon-text mb-6">About Me</h2>
+            <p class="mb-4 leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
+              A results-driven Data Analyst and Software Developer with 3+ years of experience, holding an M.S. in
+              Computer Science from NJIT. I specialize in building end-to-end solutions, from architecting high-volume
+              ETL pipelines and scalable microservices on AWS, to developing interactive Power BI dashboards and elegant
+              front-end experiences with Flutter and React.
+            </p>
+            <p class="leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
+              I have a proven track record of improving system performance by up to 40% and am passionate about
+              leveraging data to drive strategic decisions and deliver impactful, user-centric applications.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item timeline-left scroll-animate">
+            <div class="glass-card p-6 rounded-lg">
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-white">Software Developer</h3>
+                <p class="text-md text-cyan-400 mb-2">YoungBrainz Infotec Pvt. Ltd</p>
+                <p class="text-sm text-gray-400 mb-3">(Jul 2020 - Jul 2023)</p>
+                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
+                  <li>Managed design systems and reusable UI components utilizing Material Design principles, receiving
+                    positive feedback from
+                    over 150 beta testers during usability assessments.</li>
+                  <li>Integrated Firebase for secure user authentication and implemented Role-Based Access Control
+                    (RBAC) to manage granular permissions tailored to distinct organizational roles, enhancing data
+                    security and operational efficiency.</li>
+                  <li> Designed a task management system using BLoC architecture and state management, which organized
+                    follow-ups, calls,
+                    site visits, and messages, achieving a 50% increase in operational efficiency in client management.
+                  </li>
+                  <li>Developed a patient management system using Python, FastAPI, and PostgreSQL, automating
+                    appointment scheduling
+                    and patient record management, reducing administrative workload by 35%.</li>
+                </ul>
+              </div>
             </div>
-        </header>
+          </div>
+          <div class="timeline-item timeline-right scroll-animate">
+            <div class="glass-card p-6 rounded-lg">
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-white">Data Analyst Intern</h3>
+                <p class="text-md text-cyan-400 mb-2">Digiprop India LLP</p>
+                <p class="text-sm text-gray-400 mb-3">(Jan 2020 - Jun 2020)</p>
+                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
+                  <li>Automated web scraping of housing listings using Python and Selenium, deploying the pipeline as
+                    AWS Lambda functions
+                    triggered by AWS CloudWatch, reducing manual update delays by 90%, to ensure up-to-date data
+                    ingestion.</li>
+                  <li>Engineered a normalized SQL database with PostgreSQL to index 20+ scraped housing attributes,
+                    decreasing data retrieval
+                    latency by 60% and improving query speeds, which expedited report generation.</li>
+                  <li>Empowered stakeholder decision-making by developing intuitive Power BI dashboards that translated
+                    complex property data
+                    into actionable insights on key metrics and market trends.</li>
+                  <li>Architected and implemented an end-to-end machine learning pipeline for residential property
+                    valuation, leveraging Pandas
+                    for advanced feature engineering and XGBoost for model training, resulting in a 96.38% prediction
+                    accuracy.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <main class="space-y-24 md:space-y-32">
-
-            <section id="about" class="container mx-auto px-6 scroll-animate">
-                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl">
-                    <div class="card-content text-center">
-                        <h2 class="text-4xl font-bold neon-text mb-6">About Me</h2>
-                        <p class="mb-4 leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
-                            A results-driven Data Analyst and Software Developer with 3+ years of experience, holding an M.S. in Computer Science from NJIT. I specialize in building end-to-end solutions, from architecting high-volume ETL pipelines and scalable microservices on AWS, to developing interactive Power BI dashboards and elegant front-end experiences with Flutter and React.
-                        </p>
-                        <p class="leading-relaxed max-w-3xl mx-auto text-lg text-gray-300">
-                            I have a proven track record of improving system performance by up to 40% and am passionate about leveraging data to drive strategic decisions and deliver impactful, user-centric applications.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience" class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item timeline-left scroll-animate">
-                        <div class="glass-card p-6 rounded-lg">
-                           <div class="card-content">
-                                <h3 class="text-xl font-bold text-white">Software Developer</h3>
-                                <p class="text-md text-cyan-400 mb-2">YoungBrainz Infotec Pvt. Ltd</p>
-                                <p class="text-sm text-gray-400 mb-3">(Jul 2020 - Jul 2023)</p>
-                                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
-                                    <li>Managed design systems and reusable UI components utilizing Material Design principles, receiving positive feedback from
-over 150 beta testers during usability assessments.</li>
-                                    <li>Integrated Firebase for secure user authentication and implemented Role-Based Access Control (RBAC) to manage granular permissions tailored to distinct organizational roles, enhancing data security and operational efficiency.</li>
-                                    <li> Designed a task management system using BLoC architecture and state management, which organized follow-ups, calls,
-site visits, and messages, achieving a 50% increase in operational efficiency in client management.</li>
-                                    <li>Developed a patient management system using Python, FastAPI, and PostgreSQL, automating appointment scheduling
-and patient record management, reducing administrative workload by 35%.</li>
-                                </ul>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-right scroll-animate">
-                         <div class="glass-card p-6 rounded-lg">
-                           <div class="card-content">
-                                <h3 class="text-xl font-bold text-white">Data Analyst Intern</h3>
-                                <p class="text-md text-cyan-400 mb-2">Digiprop India LLP</p>
-                                <p class="text-sm text-gray-400 mb-3">(Jan 2020 - Jun 2020)</p>
-                                <ul class="list-disc pl-5 mt-3 text-gray-300 space-y-2 text-sm">
-                                    <li>Automated web scraping of housing listings using Python and Selenium, deploying the pipeline as AWS Lambda functions
-triggered by AWS CloudWatch, reducing manual update delays by 90%, to ensure up-to-date data ingestion.</li>
-                                    <li>Engineered a normalized SQL database with PostgreSQL to index 20+ scraped housing attributes, decreasing data retrieval
-latency by 60% and improving query speeds, which expedited report generation.</li>
-                                    <li>Empowered stakeholder decision-making by developing intuitive Power BI dashboards that translated complex property data
-into actionable insights on key metrics and market trends.</li>
-                                    <li>Architected and implemented an end-to-end machine learning pipeline for residential property valuation, leveraging Pandas
-for advanced feature engineering and XGBoost for model training, resulting in a 96.38% prediction accuracy.</li>
-                                </ul>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="education" class="container mx-auto px-6 scroll-animate">
-                <h2 class="text-4xl font-bold neon-text mb-12 text-center">Education</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="glass-card p-6 rounded-lg text-center">
-                        <div class="card-content">
-                            <h3 class="text-xl font-semibold">M.S. in Computer Science</h3>
-                            <p class="text-md text-gray-400">New Jersey Institute of Technology, 2025</p>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 rounded-lg text-center">
-                        <div class="card-content">
-                            <h3 class="text-xl font-semibold">B.E. in Information & Communication Technology</h3>
-                            <p class="text-md text-gray-400">Gujarat Technological University, 2022</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <section id="education" class="container mx-auto px-6 scroll-animate">
+        <h2 class="text-4xl font-bold neon-text mb-12 text-center">Education</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="glass-card p-6 rounded-lg text-center">
+            <div class="card-content">
+              <h3 class="text-xl font-semibold">M.S. in Computer Science</h3>
+              <p class="text-md text-gray-400">New Jersey Institute of Technology, 2025</p>
+            </div>
+          </div>
+          <div class="glass-card p-6 rounded-lg text-center">
+            <div class="card-content">
+              <h3 class="text-xl font-semibold">B.E. in Information & Communication Technology</h3>
+              <p class="text-md text-gray-400">Gujarat Technological University, 2022</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
-            <section id="projects" class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 100ms;">
-                        <div class="card-content p-6">
-                            <img src="sentimentalanalysis.jpg" alt="Sentiment Analysis" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
-                            <h3 class="text-xl font-bold neon-text mb-2">Sentiment Analysis Model</h3>
-                            <p class="text-gray-300 text-sm">Developed an ML model to analyze social media sentiments, achieving 85% accuracy in predicting user emotions.</p>
-                        </div>
-                    </div>
-                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 200ms;">
-                         <div class="card-content p-6">
-                            <img src="facemaskdetection.jpg" alt="Face Mask Detection" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
-                            <h3 class="text-xl font-bold neon-text mb-2">Face Mask Detection</h3>
-                            <p class="text-gray-300 text-sm">Implemented a real-time face mask detection system using OpenCV and TensorFlow to enhance public safety.</p>
-                        </div>
-                    </div>
-                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
-                         <div class="card-content p-6">
-                            <img src="ecommerce.jpg" alt="E-commerce App" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
-                            <h3 class="text-xl font-bold neon-text mb-2">Flutter E-commerce App</h3>
-                            <p class="text-gray-300 text-sm">Designed a Flutter-based e-commerce app with integrated payment gateways and a user-friendly UI.</p>
-                         </div>
-                    </div>
-                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
-                         <div class="card-content p-6">
-                            <img src="newsapp.jpg" alt="NEWS App" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
-                            <h3 class="text-xl font-bold neon-text mb-2">News Aggregator App</h3>
-                            <p class="text-gray-300 text-sm">Created a news aggregation app that curates articles from various sources, allowing users to customize their news feed.</p>
-                         </div>
-                    </div>
-                    <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
-                         <div class="card-content p-6">
-                            <img src="section-realestate.jpg" alt="CRM for Construction Business" class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
-                            <h3 class="text-xl font-bold neon-text mb-2">CRM Application for Construction Business</h3>
-                            <p class="text-gray-300 text-sm">Developed a CRM system tailored for construction companies, streamlining client management and project tracking.</p>
-                         </div>
-                    </div>
-                </div>
-            </section>
+      <section id="projects" class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 100ms;">
+            <div class="card-content p-6">
+              <img src="sentimentalanalysis.jpg" alt="Sentiment Analysis"
+                class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+              <h3 class="text-xl font-bold neon-text mb-2">Sentiment Analysis Model</h3>
+              <p class="text-gray-300 text-sm">Developed an ML model to analyze social media sentiments, achieving 85%
+                accuracy in predicting user emotions.</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 200ms;">
+            <div class="card-content p-6">
+              <img src="facemaskdetection.jpg" alt="Face Mask Detection"
+                class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+              <h3 class="text-xl font-bold neon-text mb-2">Face Mask Detection</h3>
+              <p class="text-gray-300 text-sm">Implemented a real-time face mask detection system using OpenCV and
+                TensorFlow to enhance public safety.</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+            <div class="card-content p-6">
+              <img src="ecommerce.jpg" alt="E-commerce App"
+                class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+              <h3 class="text-xl font-bold neon-text mb-2">Flutter E-commerce App</h3>
+              <p class="text-gray-300 text-sm">Designed a Flutter-based e-commerce app with integrated payment gateways
+                and a user-friendly UI.</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+            <div class="card-content p-6">
+              <img src="newsapp.jpg" alt="NEWS App"
+                class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+              <h3 class="text-xl font-bold neon-text mb-2">News Aggregator App</h3>
+              <p class="text-gray-300 text-sm">Created a news aggregation app that curates articles from various
+                sources, allowing users to customize their news feed.</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-lg scroll-animate" style="transition-delay: 300ms;">
+            <div class="card-content p-6">
+              <img src="section-realestate.jpg" alt="CRM for Construction Business"
+                class="w-full h-40 object-cover rounded-md mb-4 border border-white/10" />
+              <h3 class="text-xl font-bold neon-text mb-2">CRM Application for Construction Business</h3>
+              <p class="text-gray-300 text-sm">Developed a CRM system tailored for construction companies, streamlining
+                client management and project tracking.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <section id="skills" class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Technical Skills</h2>
-                <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto scroll-animate">
-                    <div class="tech-pill">Python</div>
-                    <div class="tech-pill">Flutter & Dart</div>
-                    <div class="tech-pill">JavaScript</div>
-                    <div class="tech-pill">HTML/CSS</div>
-                    <div class="tech-pill">SQL</div>
-                    <div class="tech-pill">PostgreSQL</div>
-                    <div class="tech-pill">PowerBI</div>
-                    <div class="tech-pill">AWS</div>
-                    <div class="tech-pill">Firebase</div>
-                    <div class="tech-pill">Docker</div>
-                    <div class="tech-pill">Jenkins</div>
-                    <div class="tech-pill">Git</div>
-                </div>
-                <style>
-                    .tech-pill {
-                        background: rgba(16, 16, 22, 0.6);
-                        border: 1px solid var(--border-color);
-                        padding: 8px 16px;
-                        border-radius: 9999px;
-                        font-weight: 500;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-                    }
-                    .tech-pill:hover {
-                        color: white;
-                        border-color: var(--primary-glow);
-                        transform: translateY(-2px) scale(1.05);
-                        background: linear-gradient(90deg, rgba(0, 246, 255, 0.1), rgba(122, 0, 255, 0.1));
-                        box-shadow: 0 0 15px var(--primary-glow);
-                    }
-                </style>
-            </section>
+      <section id="skills" class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold neon-text mb-12 text-center scroll-animate">Technical Skills</h2>
+        <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto scroll-animate">
+          <div class="tech-pill">Python</div>
+          <div class="tech-pill">Flutter & Dart</div>
+          <div class="tech-pill">JavaScript</div>
+          <div class="tech-pill">HTML/CSS</div>
+          <div class="tech-pill">SQL</div>
+          <div class="tech-pill">PostgreSQL</div>
+          <div class="tech-pill">PowerBI</div>
+          <div class="tech-pill">AWS</div>
+          <div class="tech-pill">Firebase</div>
+          <div class="tech-pill">Docker</div>
+          <div class="tech-pill">Jenkins</div>
+          <div class="tech-pill">Git</div>
+        </div>
+        <style>
+          .tech-pill {
+            background: rgba(16, 16, 22, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          }
 
-            <section id="contact" class="container mx-auto px-6 my-24 md:my-32">
-                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto scroll-animate">
-                    <div class="card-content text-center">
-                        <h2 class="text-4xl font-bold neon-text mb-4">Get In Touch</h2>
-                        <p class="text-gray-300 mb-8">I'm currently seeking new opportunities. Feel free to reach out!</p>
-                        <div class="flex flex-wrap items-center justify-center gap-6">
-                            <a href="mailto:shrey.bodra@gmail.com" class="contact-link">
-                                <span>shreybodra777@gmail.com</span>
-                            </a>
-                            <a href="https://linkedin.com/in/shrey-bodra" target="_blank" class="contact-link">
-                                <span>LinkedIn</span>
-                            </a>
-                            <a href="https://github.com/shreybodra" target="_blank" class="contact-link">
-                                <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    .contact-link {
-                        display: inline-block;
-                        padding: 10px 20px;
-                        border: 1px solid var(--primary-glow);
-                        border-radius: 5px;
-                        color: var(--primary-glow);
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                    }
-                    .contact-link:hover {
-                        background-color: var(--primary-glow);
-                        color: var(--bg-dark);
-                        box-shadow: 0 0 20px var(--primary-glow);
-                        transform: scale(1.05);
-                    }
-                </style>
-            </section>
+          .tech-pill:hover {
+            color: white;
+            border-color: var(--primary-glow);
+            transform: translateY(-2px) scale(1.05);
+            background: linear-gradient(90deg, rgba(0, 246, 255, 0.1), rgba(122, 0, 255, 0.1));
+            box-shadow: 0 0 15px var(--primary-glow);
+          }
+        </style>
+      </section>
 
-        </main>
+      <section id="contact" class="container mx-auto px-6 my-24 md:my-32">
+        <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto scroll-animate">
+          <div class="card-content text-center">
+            <h2 class="text-4xl font-bold neon-text mb-4">Get In Touch</h2>
+            <p class="text-gray-300 mb-8">I'm currently seeking new opportunities. Feel free to reach out!</p>
+            <div class="flex flex-wrap items-center justify-center gap-6">
+              <a href="mailto:shrey.bodra@gmail.com" class="contact-link">
+                <span>shreybodra777@gmail.com</span>
+              </a>
+              <a href="https://linkedin.com/in/shrey-bodra" target="_blank" class="contact-link">
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/shreybodra" target="_blank" class="contact-link">
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <style>
+          .contact-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--primary-glow);
+            border-radius: 5px;
+            color: var(--primary-glow);
+            font-weight: 600;
+            transition: all 0.3s ease;
+          }
 
-        <footer class="py-8 text-center text-gray-500">
-            &copy; 2025 Shrey Prafulkumar Bodra. All rights reserved.
-        </footer>
-    </div>
-    
-    <script>
-        const animatedElements = document.querySelectorAll('.scroll-animate');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+          .contact-link:hover {
+            background-color: var(--primary-glow);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: scale(1.05);
+          }
+        </style>
+      </section>
 
-        animatedElements.forEach(el => observer.observe(el));
-    </script>
+    </main>
+
+    <footer class="py-8 text-center text-gray-500">
+      &copy; 2025 Shrey Prafulkumar Bodra. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 
